@@ -1,35 +1,57 @@
 package Problem1;
 
+import java.util.Arrays;
+
 public class ArrayStack<T> implements Stack<T> {
     // do not change member variables
     private T[] data;
     private int size;
 
     private ArrayStack() {
+        data = (T[]) new Object[10];
+        size = 0;
     }
 
     public ArrayStack(int capacity) {
-        // homework
+        data = (T[]) new Object[capacity];
+        size = 0;
     }
 
     @Override
     public boolean push(T val) {
-        // homework
-        return false;   // place holder
+        if(size >= data.length)
+       {/*
+            T[] temp = (T[]) new Object[data.length *2];
+            for(int i = 0; i < temp.length - 1; i++)
+            {
+                temp[i] = data[i];
+            }
+            data = temp;*/
+            data = Arrays.copyOf(data, (data.length*2));
+            return false;
+       }
+        data[size++] = val;
+        return true;
     }
 
     @Override
     public T pop() {
         // homework
-        T val = null;   // place holder
-        return val;   // place holder
+        if(size <= 0){
+            return null;
+        }
+        T val = data[--size];
+        data[size] = null;
+        return val;
     }
 
     @Override
     public T peek() {
-        // homework
-        T val = null;   // place holder
-        return val;   // place holder
+        if(size < 0){
+            return null;
+        }
+
+        return data[size-1];
     }
 
     @Override
