@@ -43,7 +43,7 @@ public class SingleLinkedList {
 
     // reverse the linked list nodes iteratively (no recursion)
     public void reverse() {
-        ListNode p0 = head;
+        /*ListNode p0 = head;
         if(p0.next == null || p0.next.next == null){
             return;
         }
@@ -64,7 +64,39 @@ public class SingleLinkedList {
                 p0.next = p2;
                 p1.next = p2.next;
             }
+        }*/
+        ListNode current = head;
+        ListNode previous = null;
+        ListNode forward = null;
+        if(current.next == null || current.next.next == null){
+            return;
         }
+        while (current.next != null) {
+        forward = current.next;
+        current.next = previous;
+        previous = current;
+        current = forward;
+        }
+
+        head = current;
+        head.next = previous;
+       /* if(head == null || head.next == null){
+            return;
+        }
+        ListNode p1 = head;
+        ListNode p2 = p1.next;
+        ListNode tmp = null;
+        while(p1 != p2){
+            if(p2.next == null) {
+                head = p2;
+                tmp = null;
+            } else
+                tmp = p2.next;
+            p2.next = p1;
+            p1 = p2;
+            if(tmp != null)
+                p2 = tmp;
+        }*/
        /* ListNode prev = null;
         ListNode current = head;
         ListNode next = null;

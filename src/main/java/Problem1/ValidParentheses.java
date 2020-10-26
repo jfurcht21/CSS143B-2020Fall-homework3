@@ -6,8 +6,16 @@ public class ValidParentheses {
     private static LinkedListStack stack = new LinkedListStack<String>();
     // Do not change signature (function name, parameters, return type)
     public static boolean isValid(String str) {
+        if(str == null){
+            return true;
+        }
+
         if(str.length() == 0){
             return true;
+        }
+
+        if(str.length() % 2 != 0){
+            return false;
         }
 
         for(int i = 0;i <= str.length()-1; i++){
@@ -26,19 +34,21 @@ public class ValidParentheses {
             switch(c){
                 case ')':
                     isOpen = (char) stack.pop();
-                    if(isOpen == '{' || isOpen == '[')
+                    if(isOpen != '(')
                         return false;
                     break;
                 case '}':
                     isOpen = (char) stack.pop();
-                    if(isOpen == '(' || isOpen == '[')
+                    if(isOpen != '{')
                         return false;
                     break;
                 case ']':
                     isOpen = (char) stack.pop();
-                    if(isOpen == '(' || isOpen == '{')
+                    if(isOpen != '[')
                         return false;
                     break;
+                default:
+                    return false;
             }
         }
         return true;
