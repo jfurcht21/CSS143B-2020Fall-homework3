@@ -30,7 +30,7 @@ public class Problem3 {
         list = ptr;
         while (stack.size() != 0)
         {
-            ptr.next = (ListNode) stack.peek();
+            ptr.next = stack.peek();
             ptr = ptr.next;
             stack.pop();
         }
