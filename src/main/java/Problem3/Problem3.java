@@ -15,7 +15,6 @@ public class Problem3 {
             stack.push(list.next.val);
             list = list.next;
         }
-        //stack.push(list.val);
         int num = stack.size();
         for(int i=0; i < num; i++){
             print.println(stack.pop());
