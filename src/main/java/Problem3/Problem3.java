@@ -11,15 +11,16 @@ public class Problem3 {
 
     public static void printListInReverse(ListNode list, PrintStream print) {
 
-        /*while(list.next != null){
-            stack.push(list.val);
+        while(list.next != null){
+            stack.push(list.next.val);
             list = list.next;
         }
         //stack.push(list.val);
-        for(int i=0; i <= stack.size(); i++){
+        int num = stack.size();
+        for(int i=0; i < num; i++){
             print.println(stack.pop());
-        }*/
-        ListNode ptr = list;
+        }
+       /* ListNode ptr = list;
         while (ptr.next != null)
         {
             stack.push(ptr.val);
@@ -40,6 +41,6 @@ public class Problem3 {
         {
             print.println(list.val);
             list = list.next;
-        }
+        }*/
     }
     }
