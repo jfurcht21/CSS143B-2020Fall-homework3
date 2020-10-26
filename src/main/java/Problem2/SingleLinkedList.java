@@ -1,6 +1,7 @@
 package Problem2;
 
 import java.util.List;
+import java.util.concurrent.LinkedBlockingDeque;
 
 // all functions assume using dummy node
 public class SingleLinkedList {
@@ -37,13 +38,26 @@ public class SingleLinkedList {
     }
 
     public int removeAll(int valueToRemove) {
+        ListNode temp = new ListNode();
+        temp.next = head;
+        ListNode p1 = temp;
 
-        return -1; // place holder
+        while(p1.next != null){
+            if(p1.next.val == valueToRemove){
+                ListNode next = p1.next;
+                p1.next = next.next;
+            }else{
+                p1 = p1.next;
+            }
+        }
+
+        return 0;
     }
 
     // reverse the linked list nodes iteratively (no recursion)
     public void reverse() {
-        /*ListNode p0 = head;
+        /*SOMEWHAT WORKING BUT NOT WITH 3+ NUMER ARRAYS
+        ListNode p0 = head;
         if(p0.next == null || p0.next.next == null){
             return;
         }
@@ -65,6 +79,9 @@ public class SingleLinkedList {
                 p1.next = p2.next;
             }
         }*/
+
+
+        /*WORKING SOMEWHAT
         ListNode current = head;
         ListNode previous = null;
         ListNode forward = null;
@@ -79,8 +96,10 @@ public class SingleLinkedList {
         }
 
         head = current;
-        head.next = previous;
-       /* if(head == null || head.next == null){
+        head.next = previous;*/
+
+        /* HEAP ERROR
+       if(head == null || head.next == null){
             return;
         }
         ListNode p1 = head;
@@ -97,7 +116,9 @@ public class SingleLinkedList {
             if(tmp != null)
                 p2 = tmp;
         }*/
-       /* ListNode prev = null;
+
+
+        ListNode prev = null;
         ListNode current = head;
         ListNode next = null;
         if(current == null || current.next == null || current.next.next == null){
@@ -109,7 +130,11 @@ public class SingleLinkedList {
             prev = current;
             current = next;
         }
-        head = prev;*/
+        next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+        head = prev;
     }
 
     // do not change any function below
