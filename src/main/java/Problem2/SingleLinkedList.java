@@ -15,15 +15,6 @@ public class SingleLinkedList {
 
     // copy constructor
     public SingleLinkedList(SingleLinkedList list) {
-        /*SingleLinkedList newList = new SingleLinkedList();
-        ListNode node = list.head;
-        newList.add(node.val);
-        while(node.next != null)
-        {
-            ListNode newNode = new ListNode(node.val);
-            newList.add(newNode.val);
-            node = node.next;
-        }*/
         ListNode p1 = new ListNode();
         ListNode p2 = list.head.next;
         head = p1;
@@ -56,68 +47,6 @@ public class SingleLinkedList {
 
     // reverse the linked list nodes iteratively (no recursion)
     public void reverse() {
-        /*SOMEWHAT WORKING BUT NOT WITH 3+ NUMER ARRAYS
-        ListNode p0 = head;
-        if(p0.next == null || p0.next.next == null){
-            return;
-        }
-        if(p0.next.next.next == null){
-            ListNode p1 = p0.next;
-            ListNode temp = p0.next.next;
-            p1.next = p0.next;
-            p0.next = temp;
-        }
-        if(p0.next.next != null) {
-            ListNode p1 = p0.next;
-            ListNode p2 = p0.next.next;
-            while (p2.next != null) {
-                p0 = head;
-                p1 = p0.next;
-                p2 = p0.next.next;
-                p2.next = p0.next;
-                p0.next = p2;
-                p1.next = p2.next;
-            }
-        }*/
-
-
-        /*WORKING SOMEWHAT
-        ListNode current = head;
-        ListNode previous = null;
-        ListNode forward = null;
-        if(current.next == null || current.next.next == null){
-            return;
-        }
-        while (current.next != null) {
-        forward = current.next;
-        current.next = previous;
-        previous = current;
-        current = forward;
-        }
-
-        head = current;
-        head.next = previous;*/
-
-        /* HEAP ERROR
-       if(head == null || head.next == null){
-            return;
-        }
-        ListNode p1 = head;
-        ListNode p2 = p1.next;
-        ListNode tmp = null;
-        while(p1 != p2){
-            if(p2.next == null) {
-                head = p2;
-                tmp = null;
-            } else
-                tmp = p2.next;
-            p2.next = p1;
-            p1 = p2;
-            if(tmp != null)
-                p2 = tmp;
-        }*/
-
-
         ListNode prev = null;
         ListNode current = head;
         ListNode next = null;

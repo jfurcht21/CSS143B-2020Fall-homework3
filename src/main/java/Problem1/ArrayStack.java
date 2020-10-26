@@ -20,13 +20,7 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     public boolean push(T val) {
         if(size >= data.length)
-       {/*
-            T[] temp = (T[]) new Object[data.length *2];
-            for(int i = 0; i < temp.length - 1; i++)
-            {
-                temp[i] = data[i];
-            }
-            data = temp;*/
+       {
             data = Arrays.copyOf(data, (data.length*2));
             return false;
        }
@@ -36,7 +30,6 @@ public class ArrayStack<T> implements Stack<T> {
 
     @Override
     public T pop() {
-        // homework
         if(size <= 0){
             return null;
         }

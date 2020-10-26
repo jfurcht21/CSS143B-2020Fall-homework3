@@ -20,27 +20,5 @@ public class Problem3 {
         for(int i=0; i < num; i++){
             print.println(stack.pop());
         }
-       /* ListNode ptr = list;
-        while (ptr.next != null)
-        {
-            stack.push(ptr.val);
-            ptr = ptr.next;
-        }
-        // Pop from stack and replace
-        // current nodes value'
-        list = ptr;
-        while (stack.size() != 0)
-        {
-            ptr.next = stack.peek();
-            ptr = ptr.next;
-            stack.pop();
-        }
-        ptr.next = null;
-
-        while (list != null)
-        {
-            print.println(list.val);
-            list = list.next;
-        }*/
     }
-    }
+}

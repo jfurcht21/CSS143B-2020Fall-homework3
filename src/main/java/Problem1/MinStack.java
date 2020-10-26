@@ -5,7 +5,6 @@ public class MinStack extends ArrayStack<Integer> {
     // can only use Stack interface and ArrayStack from this folder
     // do not use Java Stack
     private int min = 999999999;
-    ArrayStack auxStack = new ArrayStack(size());
 
     public MinStack(int size) {
         super(size);
