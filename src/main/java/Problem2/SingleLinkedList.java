@@ -48,22 +48,15 @@ public class SingleLinkedList {
     // reverse the linked list nodes iteratively (no recursion)
     public void reverse() {
         ListNode prev = null;
-        ListNode current = head;
-        ListNode next = null;
-        if(current == null || current.next == null || current.next.next == null){
-            return;
-        }
+        ListNode current = head.next;
+
         while (current != null) {
-            next = current.next;
+            ListNode next = current.next;
             current.next = prev;
             prev = current;
             current = next;
         }
-        next = current.next;
-        current.next = prev;
-        prev = current;
-        current = next;
-        head = prev;
+        head.next = prev;
     }
 
     // do not change any function below
