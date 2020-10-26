@@ -4,28 +4,44 @@ public class MinStack extends ArrayStack<Integer> {
     // okay to add member variables
     // can only use Stack interface and ArrayStack from this folder
     // do not use Java Stack
+    private int min = 999999999;
 
     public MinStack(int size) {
-        // homework
-        super(size); // place holder
+        super(size);
     }
 
     @Override
     public boolean push(Integer val) {
-        // homework
-        return false; // place holder
+        if(val < min){
+            min = val;
+        }
+        super.push(val);
+        return true;
     }
 
     @Override
     public Integer pop() {
-        // homework
-        return -1; // place holder
+        int num = super.pop();
+        if(this.size() == 0){
+            return null;
+        }
+        if(super.peek() == null){
+            return num;
+        }
+        if(num < super.peek()){
+            min = super.peek();
+        }
+        return num;
     }
 
     public Integer getMin() {
-        // homework
-        // loop of any kind is not allowed
-        return -1; // place holder
+        if(min == 999999999){
+            return null;
+        }
+        if(this.size() == 0){
+            return null;
+        }
+        return min;
     }
 }
 

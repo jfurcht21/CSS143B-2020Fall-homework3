@@ -1,5 +1,8 @@
 package Problem2;
 
+import java.util.List;
+import java.util.concurrent.LinkedBlockingDeque;
+
 // all functions assume using dummy node
 public class SingleLinkedList {
     // do not add member variables
@@ -10,21 +13,57 @@ public class SingleLinkedList {
         head = new ListNode();  // dummy node
     }
 
-    // copy constructor
+    // Youtube video from class helped a lot with this one.
     public SingleLinkedList(SingleLinkedList list) {
-        // homework
+        ListNode p1 = new ListNode();
+        ListNode p2 = list.head.next;
+        head = p1;
+
+        while(p2!=null){
+            p1.next = new ListNode(p2.val);
+            p1=p1.next;
+            p2=p2.next;
+        }
+
+        size = list.size;
     }
 
+    // Used this as main reference when I ran into blockers.
+    //https://www.programcreek.com/2014/04/leetcode-remove-linked-list-elements-java/
     public int removeAll(int valueToRemove) {
-        // homework
-        // in-place
-        return -1; // place holder
+        int count = 0;
+        ListNode temp = new ListNode();
+        temp.next = head;
+        ListNode p1 = temp;
+
+        while(p1.next != null){
+            if(p1.next.val == valueToRemove){
+                ListNode next = p1.next;
+                p1.next = next.next;
+                count++;
+                size--;
+            }else{
+                p1 = p1.next;
+            }
+        }
+
+        return count;
     }
 
-    // reverse the linked list nodes iteratively (no recursion)
+    // Used many resources and combined the best of each one. Main resource was
+    // the YouTube video made by Professor Du.
+    // https://www.youtube.com/watch?v=7O_dRR8fC3w&list=PLmZYijop2pDaqxjq_0p70aoe1OgC6UiFA&index=10
     public void reverse() {
-        // homework
-        // in-place
+        ListNode prev = null;
+        ListNode current = head.next;
+
+        while (current != null) {
+            ListNode next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head.next = prev;
     }
 
     // do not change any function below
